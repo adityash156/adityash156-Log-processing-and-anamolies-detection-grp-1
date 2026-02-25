@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodDash | All Restaurants</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-bar">
+      <div class="top-bar__content container">
+        <a href="index.html" class="logo logo--link">Food<span>Dash</span></a>
+        <div class="location">
+          <span class="location__icon">📍</span>
+          <span class="location__text">Deliver to <strong>Bangalore</strong></span>
+        </div>
+        <div class="search search--desktop">
+          <span class="search__icon">🔍</span>
+          <input
+            id="searchInput"
+            class="search__input"
+            type="text"
+            placeholder="Search for restaurants or cuisines"
+          />
+        </div>
+        <nav class="nav">
+          <button class="nav__item" id="filterAll">All</button>
+          <button class="nav__item" data-filter="Top Rated">Top Rated</button>
+          <button class="nav__item" data-filter="Offers">Offers</button>
+        </nav>
+        <a
+          href="restaurants.html"
+          class="top-icon"
+          title="View all restaurants"
+          aria-label="View all restaurants"
+        >
+          🍽️
+        </a>
+        <div class="user-actions">
+          <a href="checkout.html" class="user-actions__btn">
+            <span>🛒</span>
+            <span class="user-actions__label">Cart</span>
+            <span id="cartCount" class="cart-count-badge">0</span>
+          </a>
+          <a
+            href="login.html"
+            id="loginButton"
+            class="user-actions__btn user-actions__btn--primary"
+          >
+            
+            <span>Login</span>
+          </a>
+        </div>
+      </div>
+      <div class="search search--mobile container">
+        <span class="search__icon">🔍</span>
+        <input
+          id="searchInputMobile"
+          class="search__input"
+          type="text"
+          placeholder="Search for restaurants or cuisines"
+        />
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero container">
+        <div class="hero__text">
+          <h1>All restaurants near you</h1>
+          <p>Browse over 100 restaurants and discover new favourites.</p>
+        </div>
+        <div class="hero__tags" id="cuisineFilters"></div>
+      </section>
+
+      <section class="container">
+        <div class="section-header">
+          <h2 class="section-title">Restaurants</h2>
+          <span id="restaurantCount" class="section-subtitle"></span>
+        </div>
+        <div class="carousel" id="restaurantCarousel">
+          <button
+            class="carousel__btn carousel__btn--prev"
+            id="carouselPrev"
+            aria-label="Previous restaurants"
+          >
+            ‹
+          </button>
+          <div class="carousel__viewport">
+            <div class="carousel__track" id="carouselTrack">
+              <!-- Carousel restaurant cards -->
+            </div>
+          </div>
+          <button
+            class="carousel__btn carousel__btn--next"
+            id="carouselNext"
+            aria-label="Next restaurants"
+          >
+            ›
+          </button>
+        </div>
+        <button id="showAllRestaurants" class="show-all-btn">
+          <span>Show all restaurants</span>
+          <span>▾</span>
+        </button>
+        <div id="hotelGrid" class="hotel-grid hidden">
+          <!-- All restaurants grid -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content container">
+        <div class="footer__brand">
+          <div class="logo logo--footer">Food<span>Dash</span></div>
+          <p>Inspired by Swiggy. Demo project for learning only.</p>
+        </div>
+        <div class="footer__links">
+          <a href="#">About</a>
+          <a href="#">Help</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="restaurants.js"></script>
+  </body>
+  </html>
+

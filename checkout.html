@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FoodDash | Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="top-bar">
+      <div class="top-bar__content container">
+        <a href="index.html" class="logo logo--link">Food<span>Dash</span></a>
+        <div class="location">
+          <span class="location__icon">📍</span>
+          <span class="location__text">Deliver to <strong>Bangalore</strong></span>
+        </div>
+        <div class="search search--desktop"></div>
+        <nav class="nav"></nav>
+        <a
+          href="restaurants.html"
+          class="top-icon"
+          title="View all restaurants"
+          aria-label="View all restaurants"
+        >
+          🍽️
+        </a>
+        <div class="user-actions">
+          <a href="checkout.html" class="user-actions__btn">
+            <span>🛒</span>
+            <span class="user-actions__label">Cart</span>
+            <span id="cartCount" class="cart-count-badge">0</span>
+          </a>
+          <a
+            href="login.html"
+            id="loginButton"
+            class="user-actions__btn user-actions__btn--primary"
+          >
+            
+            <span>Login</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main checkout-main">
+      <section class="container">
+        <div class="checkout-layout">
+          <div class="checkout-card">
+            <div class="checkout-items-header">
+              <h2 class="section-title">Your cart</h2>
+            </div>
+            <div id="cartItems"></div>
+            <p id="cartEmpty" class="checkout-empty hidden">
+              Your cart is empty. Add some dishes first.
+            </p>
+          </div>
+
+          <div class="checkout-card">
+            <h2 class="section-title">Delivery & payment</h2>
+            <form id="checkoutForm" class="auth-form">
+              <div class="field-group">
+                <label for="nameField">Name</label>
+                <input
+                  id="nameField"
+                  type="text"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="phoneField">Phone number</label>
+                <input
+                  id="phoneField"
+                  type="tel"
+                  placeholder="10-digit mobile number"
+                  required
+                />
+              </div>
+              <div class="field-group">
+                <label for="locationSelect">Delivery location</label>
+                <select id="locationSelect" required>
+                  <option value="">Select your area</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="addressField">Delivery address</label>
+                <textarea
+                  id="addressField"
+                  rows="3"
+                  placeholder="Flat / house no, street, landmark"
+                  required
+                ></textarea>
+              </div>
+              <div class="field-group">
+                <label>Payment method</label>
+                <div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="UPI"
+                      required
+                    />
+                    UPI
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="Card"
+                    />
+                    Credit / Debit card
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value="COD"
+                    />
+                    Cash on delivery
+                  </label>
+                </div>
+              </div>
+
+              <div class="checkout-summary-row">
+                <span>Items</span>
+                <span id="summaryItems">0</span>
+              </div>
+              <div class="checkout-summary-row">
+                <span>Subtotal</span>
+                <span id="summarySubtotal">₹0</span>
+              </div>
+              <div class="checkout-summary-row">
+                <span>Delivery fee</span>
+                <span id="summaryDelivery">₹40</span>
+              </div>
+              <div class="checkout-summary-row checkout-summary-row--total">
+                <span>To pay</span>
+                <span id="summaryTotal">₹0</span>
+              </div>
+
+              <div class="checkout-form-actions">
+                <button
+                  type="submit"
+                  id="payButton"
+                  class="user-actions__btn user-actions__btn--primary auth-submit"
+                >
+                  Pay &amp; place order
+                </button>
+                <p class="checkout-note">
+                  This is a demo checkout. No real payment will be made.
+                </p>
+                <p id="checkoutError" class="auth-error"></p>
+                <p id="checkoutSuccess" class="checkout-success hidden">
+                  Order placed successfully! Your delicious food is on the way.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content container">
+        <div class="footer__brand">
+          <div class="logo logo--footer">Food<span>Dash</span></div>
+          <p>Inspired by Swiggy. Demo project for learning only.</p>
+        </div>
+        <div class="footer__links">
+          <a href="#">About</a>
+          <a href="#">Help</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+  </html>
+

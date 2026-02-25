@@ -1,0 +1,68 @@
+{
+  "areas": [
+    "Bangalore",
+    "MG Road",
+    "Koramangala",
+    "Indiranagar",
+    "HSR Layout",
+    "Jayanagar",
+    "Whitefield",
+    "BTM Layout",
+    "Rajajinagar",
+    "Marathahalli",
+    "Electronic City"
+  ],
+  "cuisineCombos": [
+    ["North Indian", "Biryani", "Chinese"],
+    ["Punjabi", "North Indian", "Tandoor"],
+    ["Seafood", "Chinese"],
+    ["Salads", "Healthy", "Continental"],
+    ["Street Food", "Snacks"],
+    ["Mughlai", "Biryani"],
+    ["Asian", "Chinese", "Thai"],
+    ["Italian", "Pizzas", "Pastas"],
+    ["Japanese", "Sushi"],
+    ["Indian", "Rajasthani", "Gujarati"]
+  ],
+  "restaurantNamePrefixes": [
+    "Spice Garden",
+    "Urban Tadka",
+    "Ocean Breeze",
+    "Green Bowl",
+    "Bombay Bistro",
+    "Royal Curry House",
+    "Biryani House",
+    "Biryani Hub",
+    "Biryani Point",
+    "La Pizzeria",
+    "Sushi & Co.",
+    "Desi Zaika"
+  ],
+  "dishTemplates": [
+    { "name": "Signature Thali", "veg": true, "basePrice": 240, "cuisine": "Indian" },
+    { "name": "Paneer Curry", "veg": true, "basePrice": 230, "cuisine": "North Indian" },
+    { "name": "Butter Chicken", "veg": false, "basePrice": 260, "cuisine": "North Indian" },
+    { "name": "Veg Biryani", "veg": true, "basePrice": 220, "cuisine": "Biryani" },
+    { "name": "Chicken Biryani", "veg": false, "basePrice": 260, "cuisine": "Biryani" },
+    { "name": "Hyderabadi Chicken Biryani", "veg": false, "basePrice": 280, "cuisine": "Biryani" },
+    { "name": "Hyderabadi Veg Biryani", "veg": true, "basePrice": 250, "cuisine": "Biryani" },
+    { "name": "Dum Biryani", "veg": false, "basePrice": 290, "cuisine": "Biryani" },
+    { "name": "Veg Fried Rice", "veg": true, "basePrice": 210, "cuisine": "Chinese" },
+    { "name": "Chicken Fried Rice", "veg": false, "basePrice": 240, "cuisine": "Chinese" },
+    { "name": "Veg Noodles", "veg": true, "basePrice": 210, "cuisine": "Chinese" },
+    { "name": "Chicken Noodles", "veg": false, "basePrice": 240, "cuisine": "Chinese" },
+    { "name": "Caesar Salad", "veg": true, "basePrice": 220, "cuisine": "Continental" },
+    { "name": "Grilled Chicken Salad", "veg": false, "basePrice": 260, "cuisine": "Healthy" },
+    { "name": "Vada Pav", "veg": true, "basePrice": 80, "cuisine": "Street Food" },
+    { "name": "Pav Bhaji", "veg": true, "basePrice": 140, "cuisine": "Street Food" },
+    { "name": "Margherita Pizza", "veg": true, "basePrice": 260, "cuisine": "Italian" },
+    { "name": "Pepperoni Pizza", "veg": false, "basePrice": 320, "cuisine": "Italian" },
+    { "name": "Veg Burger", "veg": true, "basePrice": 180, "cuisine": "Snacks" },
+    { "name": "Chicken Burger", "veg": false, "basePrice": 220, "cuisine": "Snacks" },
+    { "name": "Sushi Platter", "veg": false, "basePrice": 420, "cuisine": "Sushi" },
+    { "name": "Veg Sushi Combo", "veg": true, "basePrice": 380, "cuisine": "Sushi" },
+    { "name": "Ramen Bowl", "veg": false, "basePrice": 340, "cuisine": "Japanese" },
+    { "name": "Veg Ramen Bowl", "veg": true, "basePrice": 320, "cuisine": "Japanese" }
+  ]
+}
+
