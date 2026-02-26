@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodiePro Startup</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0f0f0f;color:white;overflow-x:hidden}
+
+/* SPLASH SCREEN */
+#splash{
+position:fixed;
+width:100%;height:100%;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation:fadeOut 4s forwards;
+animation-delay:3s;
+}
+
+#splash h1{
+font-size:50px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+-webkit-background-clip:text;
+color:transparent;
+animation:zoomIn 2s ease;
+}
+
+@keyframes zoomIn{
+0%{transform:scale(0.5);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden}
+}
+
+/* LOGIN SELECTION */
+#roleSelect{
+display:flex;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+gap:20px;
+}
+
+.role-btn{
+padding:15px 40px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+}
+
+.role-btn:hover{transform:scale(1.1)}
+
+/* LOGIN FORM */
+#loginPage{
+display:none;
+height:100vh;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+gap:15px;
+}
+
+.login-box{
+background:#111;
+padding:40px;
+border-radius:15px;
+width:320px;
+text-align:center;
+box-shadow:0 0 20px rgba(255,81,47,.3);
+}
+
+.login-box input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:none;
+border-radius:20px;
+background:#222;
+color:white;
+}
+
+.login-box button{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:none;
+border-radius:20px;
+background:#ff512f;
+color:white;
+cursor:pointer;
+}
+
+.google-btn{
+background:white;
+color:black;
+margin-top:10px;
+}
+
+.forgot{
+font-size:12px;
+color:#ff512f;
+cursor:pointer;
+margin-top:5px;
+}
+
+/* MAIN APP */
+#app{
+display:none;
+}
+
+/* NAVBAR */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#111;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li{
+cursor:pointer;
+transition:.3s;
+}
+
+nav ul li:hover{color:#ff512f}
+
+.cart{
+background:#ff512f;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+background-size:cover;
+background-position:center;
+padding-top:80px;
+}
+
+.hero h1{
+font-size:50px;
+margin-bottom:20px;
+}
+
+.btn{
+padding:14px 30px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+border:none;
+color:white;
+font-size:16px;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{transform:scale(1.1)}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+padding:40px;
+z-index:2000;
+animation:fadeIn .4s ease;
+}
+
+.popup.show{display:flex}
+
+.popup-content{
+background:#111;
+width:95%;
+max-width:1300px;
+border-radius:15px;
+padding:30px;
+max-height:90vh;
+overflow-y:auto;
+}
+
+.close{
+float:right;
+cursor:pointer;
+font-size:22px;
+color:#ff512f;
+}
+
+/* FILTER */
+.controls{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+justify-content:center;
+margin:20px 0;
+}
+
+.controls input,.controls select,.controls button{
+padding:10px 15px;
+border-radius:20px;
+border:none;
+background:#222;
+color:white;
+}
+
+.controls button:hover{
+background:#ff512f;
+cursor:pointer;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:15px;
+transition:.3s;
+}
+
+.card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px rgba(255,81,47,.5);
+}
+
+.status{
+font-size:12px;
+padding:4px 10px;
+border-radius:20px;
+display:inline-block;
+margin-bottom:5px;
+}
+
+.rating{color:gold;margin:5px 0}
+
+.offer{
+background:#ff512f;
+padding:4px 8px;
+border-radius:15px;
+font-size:12px;
+display:inline-block;
+margin-bottom:5px;
+}
+
+.add-btn{
+margin-top:8px;
+padding:8px;
+background:#ff512f;
+border:none;
+border-radius:20px;
+cursor:pointer;
+color:white;
+}
+
+/* CART */
+.cart-panel{
+position:fixed;
+right:-400px;
+top:0;
+width:350px;
+height:100%;
+background:#111;
+padding:20px;
+transition:.4s;
+z-index:3000;
+overflow-y:auto;
+}
+
+.cart-panel.show{right:0}
+
+.cart-item{
+margin:10px 0;
+border-bottom:1px solid #333;
+padding-bottom:5px;
+}
+
+hr{
+border:1px solid #333;
+margin:15px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+<h1>FoodiePro 🚀</h1>
+</div>
+
+<!-- ROLE SELECT -->
+<div id="roleSelect">
+<h2>Select Login Type</h2>
+<button class="role-btn" onclick="selectRole('user')">User</button>
+<button class="role-btn" onclick="selectRole('admin')">Admin</button>
+</div>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+<div class="login-box">
+<h2 id="loginTitle">Login</h2>
+<input type="text" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+<div class="forgot">Forgot Password?</div>
+<button onclick="login()">Login</button>
+<button class="google-btn">Sign in with Google</button>
+</div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+
+<nav>
+<div class="logo">FoodiePro</div>
+<ul>
+<li onclick="openPopup()">Restaurants</li>
+<li>Offers</li>
+<li>Contact</li>
+</ul>
+<div class="cart" onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</div>
+</nav>
+
+<section class="hero">
+<h1>Premium Food Delivered Fast</h1>
+<button class="btn" onclick="openPopup()">Order Now</button>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-content">
+<span class="close" onclick="closePopup()">✖</span>
+<h2 style="text-align:center;">Explore Restaurants</h2>
+
+<div class="controls">
+<input type="text" id="search" placeholder="Search restaurant..." onkeyup="applyFilters()">
+<select id="sort" onchange="applyFilters()">
+<option value="">Sort by Rating</option>
+<option value="high">High to Low</option>
+<option value="low">Low to High</option>
+</select>
+<button onclick="filterType('all')">All</button>
+<button onclick="filterType('veg')">Veg</button>
+<button onclick="filterType('nonveg')">Non-Veg</button>
+</div>
+
+<div class="grid" id="grid"></div>
+</div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+<h2>Your Cart</h2>
+<div id="cartItems"></div>
+
+<hr>
+
+<h3>Apply Coupon</h3>
+<input type="text" id="couponInput" placeholder="Enter coupon code"
+style="width:100%;padding:8px;background:#222;color:white;border:none;border-radius:10px;">
+
+<button onclick="applyCoupon()"
+style="width:100%;margin-top:10px;padding:8px;background:#ff512f;border:none;border-radius:20px;color:white;">
+Apply Coupon
+</button>
+
+<h3 style="margin-top:15px;">Total: ₹<span id="totalAmount">0</span></h3>
+
+<hr>
+
+<h3>Payment Method</h3>
+<select id="paymentMethod"
+style="width:100%;padding:8px;background:#222;color:white;border:none;border-radius:10px;">
+<option value="UPI">UPI</option>
+<option value="Card">Credit/Debit Card</option>
+<option value="COD">Cash on Delivery</option>
+</select>
+
+<button onclick="checkout()"
+style="width:100%;margin-top:15px;padding:10px;background:green;border:none;border-radius:20px;color:white;">
+Proceed to Pay
+</button>
+
+</div>
+
+</div>
+<script>
+
+// ================= SPLASH + ROLE =================
+
+let selectedRole = "";
+
+window.onload = function(){
+setTimeout(()=>{
+document.getElementById("roleSelect").style.display="flex";
+},3000);
+}
+
+function selectRole(role){
+selectedRole = role;
+document.getElementById("roleSelect").style.display="none";
+document.getElementById("loginPage").style.display="flex";
+document.getElementById("loginTitle").innerText =
+role === "admin" ? "Admin Login" : "User Login";
+}
+
+// ================= LOGIN =================
+
+function login(){
+
+let email = document.getElementById("email").value.trim();
+let password = document.getElementById("password").value.trim();
+
+if(email==="" || password===""){
+alert("Please fill all fields");
+return;
+}
+
+if(selectedRole === "admin"){
+
+if(email==="admin@foodiepro.com" && password==="Admin123"){
+enterApp();
+}else{
+alert("Invalid Admin Credentials");
+}
+
+}else{
+
+let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+if(!regex.test(password)){
+alert("Password must contain Capital, Small letter and Number");
+return;
+}
+
+enterApp();
+}
+
+}
+
+function enterApp(){
+document.getElementById("loginPage").style.display="none";
+document.getElementById("app").style.display="block";
+}
+
+// ================= DATA =================
+
+let typeFilter="all";
+let cart=[];
+let total=0;
+let discount=0;
+
+const restaurants=[
+// VEG
+{name:"Green Bowl Kitchen",type:"veg",rating:4,status:"open",delivery:25,offer:"20% OFF",img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c"},
+{name:"Veggie Delight",type:"veg",rating:5,status:"open",delivery:20,offer:"Free Delivery",img:"https://images.unsplash.com/photo-1490645935967-10de6ba17061"},
+{name:"Herbivore Heaven",type:"veg",rating:3,status:"closed",delivery:30,offer:"10% OFF",img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd"},
+{name:"Fresh Roots Cafe",type:"veg",rating:4,status:"open",delivery:22,offer:"Flat ₹50 OFF",img:"https://images.unsplash.com/photo-1551183053-bf91a1d81141"},
+{name:"Nature Plate",type:"veg",rating:5,status:"open",delivery:28,offer:"15% OFF",img:"https://images.unsplash.com/photo-1473093295043-cdd812d0e601"},
+{name:"Organic Feast",type:"veg",rating:4,status:"open",delivery:24,offer:"Free Dessert",img:"https://images.unsplash.com/photo-1504754524776-8f4f37790ca0"},
+{name:"Veg Paradise",type:"veg",rating:5,status:"open",delivery:19,offer:"20% OFF",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836"},
+{name:"Green Garden Dine",type:"veg",rating:3,status:"closed",delivery:35,offer:"Buy 1 Get 1",img:"https://images.unsplash.com/photo-1481931098730-318b6f776db0"},
+{name:"Healthy Bites",type:"veg",rating:4,status:"open",delivery:27,offer:"₹100 OFF",img:"https://images.unsplash.com/photo-1467003909585-2f8a72700288"},
+{name:"Pure Veg Hub",type:"veg",rating:5,status:"open",delivery:23,offer:"Free Delivery",img:"https://images.unsplash.com/photo-1498837167922-ddd27525d352"},
+
+// NONVEG
+{name:"Royal Biryani House",type:"nonveg",rating:5,status:"open",delivery:30,offer:"Flat ₹75 OFF",img:"https://images.unsplash.com/photo-1604908177522-402a79d34e0f"},
+{name:"Grill & Flames",type:"nonveg",rating:4,status:"open",delivery:35,offer:"Buy 1 Get 1",img:"https://images.unsplash.com/photo-1550547660-d9450f859349"},
+{name:"Spicy Tandoor",type:"nonveg",rating:5,status:"open",delivery:28,offer:"₹100 OFF",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836"},
+{name:"Chicken Corner",type:"nonveg",rating:4,status:"open",delivery:26,offer:"20% OFF",img:"https://images.unsplash.com/photo-1606755962773-d324e0a13086"},
+{name:"BBQ Nation Hub",type:"nonveg",rating:5,status:"open",delivery:32,offer:"Free Delivery",img:"https://images.unsplash.com/photo-1525755662778-989d0524087e"},
+{name:"Seafood Express",type:"nonveg",rating:3,status:"closed",delivery:40,offer:"15% OFF",img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"},
+{name:"Mughal Darbar",type:"nonveg",rating:4,status:"open",delivery:29,offer:"₹150 OFF",img:"https://images.unsplash.com/photo-1600891964599-f61ba0e24092"},
+{name:"Tandoori Nights",type:"nonveg",rating:5,status:"open",delivery:25,offer:"25% OFF",img:"https://images.unsplash.com/photo-1613145993510-1c3c2f45f9b8"},
+{name:"Kebab Junction",type:"nonveg",rating:4,status:"open",delivery:27,offer:"Free Dessert",img:"https://images.unsplash.com/photo-1544025162-d76694265947"},
+{name:"Meat Lovers Hub",type:"nonveg",rating:5,status:"open",delivery:31,offer:"Buy 2 Get 1",img:"https://images.unsplash.com/photo-1543353071-873f17a7a088"}
+];
+
+// ================= POPUP =================
+
+function openPopup(){
+document.getElementById("popup").classList.add("show");
+renderData(restaurants);
+}
+
+function closePopup(){
+document.getElementById("popup").classList.remove("show");
+}
+
+function filterType(type){
+typeFilter=type;
+applyFilters();
+}
+
+function applyFilters(){
+let data=[...restaurants];
+let search=document.getElementById("search").value.toLowerCase();
+
+if(search){
+data=data.filter(r=>r.name.toLowerCase().includes(search));
+}
+
+if(typeFilter!=="all"){
+data=data.filter(r=>r.type===typeFilter);
+}
+
+let sort=document.getElementById("sort").value;
+if(sort==="high"){data.sort((a,b)=>b.rating-a.rating);}
+if(sort==="low"){data.sort((a,b)=>a.rating-b.rating);}
+
+renderData(data);
+}
+
+function renderData(data){
+let grid=document.getElementById("grid");
+grid.innerHTML="";
+
+data.forEach(res=>{
+
+let stars="★".repeat(res.rating)+"☆".repeat(5-res.rating);
+
+grid.innerHTML+=`
+<div class="card" onclick="openMenu('${res.name}','${res.type}','${res.status}')">
+<img src="${res.img}">
+<span class="status" style="background:${res.status==='open'?'green':'red'}">
+${res.status.toUpperCase()}
+</span>
+<div class="offer">🔥 ${res.offer}</div>
+<h3>${res.name}</h3>
+<p>${res.type.toUpperCase()}</p>
+<p>⏱ ${res.delivery} mins</p>
+<div class="rating">${stars}</div>
+</div>`;
+});
+}
+function openMenu(name,type,status){
+
+if(status==="closed"){
+alert("Restaurant Closed ❌");
+return;
+}
+
+let menuItems="";
+
+for(let i=1;i<=10;i++){
+
+let price=100 + (i*20);
+
+
+menuItems+=`
+<div style="display:flex;justify-content:space-between;
+align-items:center;margin:10px 0;padding:10px;
+background:#222;border-radius:10px;">
+<div>
+<h4>${type==="veg"?"🥦":"🍗"} Item ${i}</h4>
+<p>₹${price}</p>
+</div>
+<button class="add-btn"
+onclick="event.stopPropagation();addToCart('${name} - Item ${i}',${price})">
+Add
+</button>
+</div>`;
+}
+
+document.getElementById("grid").innerHTML=`
+<h2 style="text-align:center;margin-bottom:20px;">${name} Menu</h2>
+${menuItems}
+<button onclick="applyFilters()"
+style="margin-top:20px;background:#555;">⬅ Back</button>
+`;
+}
+
+// ================= CART =================
+
+function addToCart(name,price){
+
+let item=cart.find(i=>i.name===name);
+
+if(item){
+item.qty++;
+}else{
+cart.push({name,price,qty:1});
+}
+
+calculateTotal();
+document.getElementById("cartCount").innerText=
+cart.reduce((sum,i)=>sum+i.qty,0);
+
+renderCart();
+}
+
+function calculateTotal(){
+total=cart.reduce((sum,i)=>sum+(i.price*i.qty),0);
+}
+
+function renderCart(){
+let cartItems=document.getElementById("cartItems");
+cartItems.innerHTML="";
+
+cart.forEach(item=>{
+cartItems.innerHTML+=`
+<div class="cart-item">
+${item.name} x${item.qty} - ₹${item.price*item.qty}
+</div>`;
+});
+
+document.getElementById("totalAmount").innerText=
+Math.max(total-discount,0);
+}
+
+function applyCoupon(){
+
+let code=document.getElementById("couponInput").value.trim().toUpperCase();
+
+if(total===0){
+alert("Add items first");
+return;
+}
+
+if(code==="FOOD50"){discount=50;}
+else if(code==="SAVE100"){discount=100;}
+else if(code==="WELCOME20"){discount=Math.floor(total*0.2);}
+else{
+discount=0;
+alert("Invalid Coupon");
+return;
+}
+
+alert("Coupon Applied 🎉");
+renderCart();
+}
+
+function checkout(){
+
+if(cart.length===0){
+alert("Cart is empty");
+return;
+}
+
+let payment=document.getElementById("paymentMethod").value;
+
+alert("Payment Successful via "+payment+" 🎉");
+
+cart=[];
+total=0;
+discount=0;
+
+document.getElementById("cartCount").innerText=0;
+renderCart();
+toggleCart();
+}
+
+function toggleCart(){
+document.getElementById("cartPanel").classList.toggle("show");
+}
+
+</script>
+
+</body>
+</html>
